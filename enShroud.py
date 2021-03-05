@@ -13,7 +13,7 @@ def perLine(n1, n2):  # n1 -> count of words in text, n2 -> count of words in se
 # convert each letter of secret to binary
 def binConvert(array):
     for word in range(len(array)):
-        char = chr(143).join(format(ord(letter), 'b')
+        char = chr(157).join(format(ord(letter), 'b')
                              for letter in array[word])
         char = char.replace('1', "\t")
         char = char.replace('0', " ")
@@ -37,7 +37,7 @@ def hideText(arrTex, arrSec):
             sentence = "\n"
             if (i < len(arrSec)):
                 for x in range(n):  # add words divided according to perLine function to each line
-                    var += arrSec[i] + chr(144)
+                    var += arrSec[i] + chr(173)
                     i += 1
                 sentence = f"{chr(160)}{var}{chr(160)}\n"
             arrTex[line] += sentence
@@ -47,7 +47,7 @@ def hideText(arrTex, arrSec):
             if (i < len(arrSec)):
                 # add all the remaining words of secret to the last line if exists
                 while (i != len(arrSec)):
-                    var += arrSec[i] + chr(144)
+                    var += arrSec[i] + chr(173)
                     i += 1
                 sentence = f"{chr(160)}{var}{chr(160)}"
             arrTex[line] += sentence
@@ -65,17 +65,25 @@ def unHideText(arrTex):
     for line in arrTex:
         lines = list(line.split(chr(160)))
         if (len(lines) > 1 and len(lines) != 2):
-            words = list(lines[1].split(chr(144)))
+            words = list(lines[1].split(chr(173)))
             for word in words:
-                letters = list(word.split(chr(143)))
+                letters = list(word.split(chr(157)))
                 for letter in letters:
                     if (letter != ""):
                         sentence += chr(int(letter, 2))
                 sentence += " "
-    print(sentence)
+    print(f"\n\n\u001b[31;3mSecret text: {sentence}\u001b[0m\n\n")
 
 
 if __name__ == "__main__":
+    print('''\u001b[32m
+                 _________.__                           .___
+  ____   ____  /   _____/|  |_________  ____  __ __  __| _/
+_/ __ \ /    \ \_____  \ |  |  \_  __ \/  _ \|  |  \/ __ | 
+\  ___/|   |  \/        \|   Y  \  | \(  <_> )  |  / /_/ | 
+ \___  >___|  /_______  /|___|  /__|   \____/|____/\____ | 
+     \/     \/        \/      \/                        \/
+                                        -- Developed By Akarsh\u001b[0m''')
     parser = argparse.ArgumentParser()
     parser.add_argument("-e", "--encode", help="encode", action="store_true")
     parser.add_argument("-d", "--decode", help="decode", action="store_true")
@@ -94,6 +102,8 @@ if __name__ == "__main__":
                     arrText[line] = arrText[line].replace('\n', "")
             hideText(arrText, arrSecret)
             file.close()
+            print(
+                f"\n\n\u001b[31;3mFile saved to output path: {args.path}\n\n")
         except:
             print("Bad file path!")
 
@@ -108,9 +118,9 @@ if __name__ == "__main__":
             print("Invalid file path!")
 
     else:
-        print("Invalid arguments!")
+        print("\u001b[31;1m\nInvalid arguments!\n")
         print("To encode:")
         print(
             "\tpython3 enShroud.py -e -p PATH_TO_FILE  -o PATH_TO_OUTPUT -s SECRET_MESSAGE")
-        print("Tp decode:")
-        print("\tpython3 enShroud.py -d -p PATH_TO_FILE")
+        print("To decode:")
+        print("\tpython3 enShroud.py -d -p PATH_TO_FILE\n\n\u001b[0m")
