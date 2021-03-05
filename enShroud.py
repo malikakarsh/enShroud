@@ -1,3 +1,6 @@
+import argparse
+
+
 # takes the count of the words in text and secret message and divides how many words would be there in each line
 def perLine(n1, n2):  # n1 -> count of words in text, n2 -> count of words in secret
     global n
@@ -22,19 +25,6 @@ def textConvert(array):
     for sentence in range(len(array)):
         array[sentence] = array[sentence].replace('\t', '1')
         array[sentence] = array[sentence].replace(' ', '0')
-
-
-    #file = open("hello.txt", 'r+')
-    #arrText = list(file.readlines())
-text = "hey there\nhow are you\nhope you are doing well\nthis summer is quite well\nfor all of us"
-arrText = list(text.split('\n'))
-
-string = "this is my finest arrangements of all"
-arrSecret = list(string.split())
-
-for line in range(len(arrText)):
-    if '\n' in arrText[line]:
-        arrText[line] = arrText[line].replace('\n', "")
 
 
 def hideText(arrTex, arrSec):
@@ -62,23 +52,14 @@ def hideText(arrTex, arrSec):
                 sentence = f"{chr(160)}{var}{chr(160)}"
             arrTex[line] += sentence
 
-    file = open("output.txt", "w+")
+    file = open(args.output, "w+")
     for line in arrTex:
         file.write(line)
 
     file.close()
 
 
-#hideText(arrText, arrSecret)
-
-file = open("output.txt", 'r+')
-lines = list(file.readlines())
-# print(lines)
-file.close()
-
-
 def unHideText(arrTex):
-    newFile = open("decoded.txt", 'w+')
     textConvert(arrTex)
     sentence = ""
     for line in arrTex:
@@ -94,4 +75,42 @@ def unHideText(arrTex):
     print(sentence)
 
 
-unHideText(lines)
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-e", "--encode", help="encode", action="store_true")
+    parser.add_argument("-d", "--decode", help="decode", action="store_true")
+    parser.add_argument("-p", "--path", help="path to text file")
+    parser.add_argument("-o", "--output", help="path to output")
+    parser.add_argument("-s", "--secret", help="secret text")
+    args = parser.parse_args()
+
+    if args.encode:
+        try:
+            file = open(args.path, 'r')
+            arrText = list(file.readlines())
+            arrSecret = list(args.secret.split())
+            for line in range(len(arrText)):
+                if '\n' in arrText[line]:
+                    arrText[line] = arrText[line].replace('\n', "")
+            hideText(arrText, arrSecret)
+            file.close()
+        except:
+            print("Bad file path!")
+
+    elif args.decode:
+        try:
+            file = open(args.path, 'r')
+            lines = list(file.readlines())
+            file.close()
+            unHideText(lines)
+
+        except:
+            print("Invalid file path!")
+
+    else:
+        print("Invalid arguments!")
+        print("To encode:")
+        print(
+            "\tpython3 enShroud.py -e -p PATH_TO_FILE  -o PATH_TO_OUTPUT -s SECRET_MESSAGE")
+        print("Tp decode:")
+        print("\tpython3 enShroud.py -d -p PATH_TO_FILE")
