@@ -83,15 +83,16 @@ def unHideText(arrTex):
     print(f"\n\n\u001b[31;3mSecret text: {sentence}\u001b[0m\n\n")
 
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
+def main():
     print('''\u001b[32m
-                 _________.__                           .___
-  ____   ____  /   _____/|  |_________  ____  __ __  __| _/
-_/ __ \ /    \ \_____  \ |  |  \_  __ \/  _ \|  |  \/ __ |
-\  ___/|   |  \/        \|   Y  \  | \(  <_> )  |  / /_/ |
- \___  >___|  /_______  /|___|  /__|   \____/|____/\____ |
-     \/     \/        \/      \/                        \/
-                                        -- Developed By Akarsh\u001b[0m''')
+                    _________.__                           .___
+      ____   ____  /   _____/|  |_________  ____  __ __  __| _/
+    _/ __ \ /    \ \_____  \ |  |  \_  __ \/  _ \|  |  \/ __ |
+    \  ___/|   |  \/        \|   Y  \  | \(  <_> )  |  / /_/ |
+     \___  >___|  /_______  /|___|  /__|   \____/|____/\____ |
+         \/     \/        \/      \/                        \/
+                                            -- Developed By Akarsh\u001b[0m''')
     parser = argparse.ArgumentParser()
     parser.add_argument("-e", "--encode", help="encode", action="store_true")
     parser.add_argument("-d", "--decode", help="decode", action="store_true")
@@ -131,3 +132,6 @@ _/ __ \ /    \ \_____  \ |  |  \_  __ \/  _ \|  |  \/ __ |
             "\tpython3 enShroud.py -e -p PATH_TO_TEXT_FILE  -o PATH_TO_OUTPUT -s SECRET_MESSAGE")
         print("To decode:")
         print("\tpython3 enShroud.py -d -p PATH_TO_TEXT_FILE\n\n\u001b[0m")
+
+
+main()
