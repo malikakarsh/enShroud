@@ -83,7 +83,6 @@ def unHideText(arrTex):
     print(f"\n\n\u001b[31;3mSecret text: {sentence}\u001b[0m\n\n")
 
 
-# if __name__ == "__main__":
 def main():
     print('''\u001b[32m
                     _________.__                           .___
@@ -132,3 +131,7 @@ def main():
             "\tpython3 enShroud.py -e -p PATH_TO_TEXT_FILE  -o PATH_TO_OUTPUT -s SECRET_MESSAGE")
         print("To decode:")
         print("\tpython3 enShroud.py -d -p PATH_TO_TEXT_FILE\n\n\u001b[0m")
+
+
+if __name__ == "__main__":
+    main()
