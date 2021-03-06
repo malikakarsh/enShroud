@@ -126,8 +126,7 @@ _/ __ \ /    \ \_____  \ |  |  \_  __ \/  _ \|  |  \/ __ |
             print("Invalid file path!")
 
     else:
-        print("\u001b[31;1m\nInvalid arguments!\n")
-        print("To encode:")
+        print("\u001b[31;1m\nTo encode:")
         print(
             "\tpython3 enShroud.py -e -p PATH_TO_FILE  -o PATH_TO_OUTPUT -s SECRET_MESSAGE")
         print("To decode:")
