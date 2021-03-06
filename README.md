@@ -19,3 +19,7 @@ python3 enShroud.py -e -p PATH_TO_TEXT_FILE -o PATH_TO_OUTPUT -s "SECRET_MESSAGE
 ```python
 python3 enShroud.py -d -p PATH_TO_TEXT_FILE
 ```
+
+## License
+
+<a href="LICENSE.txt">MIT LICENSE</a>
