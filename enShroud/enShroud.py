@@ -98,9 +98,10 @@ def main():
     parser.add_argument("-p", "--path", help="path to text file")
     parser.add_argument("-o", "--output", help="path to output")
     parser.add_argument("-s", "--secret", help="secret text")
+    parser.add_argument("-v","--version",help="version",action="store_true")
     args = parser.parse_args()
 
-    if args.encode:
+    if (args.encode and args.path and args.output and args.secret):
         try:
             file = open(args.path, 'r')
             arrText = list(file.readlines())
@@ -115,7 +116,7 @@ def main():
         except:
             print("Bad file path!")
 
-    elif args.decode:
+    elif (args.decode and args.path):
         try:
             file = open(args.path, 'r')
             lines = list(file.readlines())
@@ -124,6 +125,9 @@ def main():
 
         except:
             print("Invalid file path!")
+
+    elif (args.version):
+        print("\n\nversion: 1.0.3")
 
     else:
         print("\u001b[31;1m\nTo encode:")
