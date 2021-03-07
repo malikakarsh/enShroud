@@ -27,7 +27,7 @@ def textConvert(array):
         array[sentence] = array[sentence].replace(' ', '0')
 
 
-def hideText(arrTex, arrSec):
+def hideText(arrTex, arrSec,args):
     perLine(len(arrTex), len(arrSec))
     binConvert(arrSec)
     i = 0
@@ -108,10 +108,10 @@ def main():
             for line in range(len(arrText)):
                 if '\n' in arrText[line]:
                     arrText[line] = arrText[line].replace('\n', "")
-            hideText(arrText, arrSecret)
+            hideText(arrText, arrSecret,args)
             file.close()
             print(
-                f"\n\n\u001b[31;3mFile saved to output path: {args.path}\n\n")
+                f"\n\n\u001b[31;3mFile saved to output path: {args.output}\n\n")
         except:
             print("Bad file path!")
 
