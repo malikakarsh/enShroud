@@ -127,7 +127,7 @@ def main():
             print("Invalid file path!")
 
     elif (args.version):
-        print("\n\nversion: 1.0.3")
+        print("\n\nversion: 1.0.4")
 
     else:
         print("\u001b[31;1m\nTo encode:")
