@@ -4,7 +4,7 @@
 
 ## Introduction
 
-A steganography tool to hide secret texts in white space.
+A steganography tool to hide secret texts in white space
 
 ## Usage:
 
