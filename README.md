@@ -22,4 +22,4 @@ python3 enShroud.py -d -p PATH_TO_TEXT_FILE
 
 ## License
 
-<a href="LICENSE.txt">MIT LICENSE</a>
+<a href="LICENSE.txt">MIT LICENSE</a
